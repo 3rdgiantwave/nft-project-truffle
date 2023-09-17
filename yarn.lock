@@ -293,6 +293,32 @@
     "@ethersproject/properties" "^5.7.0"
     "@ethersproject/strings" "^5.7.0"
 
+"@ganache/console.log@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@ganache/console.log/-/console.log-0.4.1.tgz#b7263e0af9fefb2f5868ce718cc2a9ef3e110183"
+  integrity sha512-dEkG0kIK/ax7Y/6PeL/EvLo18b9vXzoG6oGmnA9JxO8+NEmfL8z5W4adGz7usQo4/Rn1D6l32gdBVTFYa40c7g==
+  dependencies:
+    "@ganache/utils" "0.9.1"
+
+"@ganache/secp256k1@0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@ganache/secp256k1/-/secp256k1-0.5.1.tgz#7f1edf45066aa8b831d5f34f499b85bb484b5901"
+  integrity sha512-oan0gcVexJa6yPeqH3Lzo4O4Ed7JjY73a3HPYyv3Lz9gd4bw9kGhEWcVa3e8iTH6Rr3As30h/ctWA7IxUofFEg==
+  dependencies:
+    node-gyp-build "4.5.0"
+    secp256k1 "4.0.3"
+
+"@ganache/utils@0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@ganache/utils/-/utils-0.9.1.tgz#958dadc983a6701ad87f83047bd3e01f98a56180"
+  integrity sha512-wkobPWaRTaF0ynQeQoC7USLevABObk8LNKPi+Jzw7RBvZ06XE4YVKMw1Jg0M2vRgcrOe6X1hb7d1fwlBGa1+/Q==
+  dependencies:
+    "@ganache/secp256k1" "0.5.1"
+    "@trufflesuite/bigint-buffer" "1.1.10"
+    emittery "0.10.0"
+    keccak "3.0.2"
+    seedrandom "3.0.5"
+
 "@metamask/eth-sig-util@4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@metamask/eth-sig-util/-/eth-sig-util-4.0.1.tgz#3ad61f6ea9ad73ba5b19db780d40d9aae5157088"
@@ -396,6 +422,13 @@
     ethereum-cryptography "1.1.2"
     keccak "3.0.2"
     secp256k1 "4.0.3"
+
+"@trufflesuite/bigint-buffer@1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@trufflesuite/bigint-buffer/-/bigint-buffer-1.1.10.tgz#a1d9ca22d3cad1a138b78baaf15543637a3e1692"
+  integrity sha512-pYIQC5EcMmID74t26GCC67946mgTJFiLXOT/BYozgrd4UEY2JHEGLhWi9cMiQCt5BSqFEvKkCHNnoj82SRjiEw==
+  dependencies:
+    node-gyp-build "4.4.0"
 
 "@types/bn.js@*", "@types/bn.js@^5.1.0", "@types/bn.js@^5.1.1":
   version "5.1.2"
@@ -1105,6 +1138,11 @@ elliptic@6.5.4, elliptic@^6.4.0, elliptic@^6.5.2, elliptic@^6.5.4:
     inherits "^2.0.4"
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
+
+emittery@0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.10.0.tgz#bb373c660a9d421bb44706ec4967ed50c02a8026"
+  integrity sha512-AGvFfs+d0JKCJQ4o01ASQLGPmSCxgfU9RFXvzPvZdjKK8oscynksuJhWrSTSw7j7Ep/sZct5b5ZhYCi8S/t0HQ==
 
 encodeurl@~1.0.2:
   version "1.0.2"
@@ -2359,6 +2397,16 @@ node-fetch@^2.6.0, node-fetch@^2.6.1, node-fetch@^2.6.12, node-fetch@^2.6.7:
   dependencies:
     whatwg-url "^5.0.0"
 
+node-gyp-build@4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-4.4.0.tgz#42e99687ce87ddeaf3a10b99dc06abc11021f3f4"
+  integrity sha512-amJnQCcgtRVw9SvoebO3BKGESClrfXGCUTX9hSn1OuGQTQBOZmVd0Z0OlecpuRksKvbsUqALE8jls/ErClAPuQ==
+
+node-gyp-build@4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-4.5.0.tgz#7a64eefa0b21112f89f58379da128ac177f20e40"
+  integrity sha512-2iGbaQBV+ITgCz76ZEjmhUKAKVf7xfY1sRl4UiKQspfZMH2h06SyhNsnSVy50cwkFQDGLyif6m/6uFXHkOZ6rg==
+
 node-gyp-build@^4.2.0, node-gyp-build@^4.3.0:
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-4.6.1.tgz#24b6d075e5e391b8d5539d98c7fc5c210cac8a3e"
@@ -2750,6 +2798,11 @@ secp256k1@4.0.3, secp256k1@^4.0.1:
     elliptic "^6.5.4"
     node-addon-api "^2.0.0"
     node-gyp-build "^4.2.0"
+
+seedrandom@3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/seedrandom/-/seedrandom-3.0.5.tgz#54edc85c95222525b0c7a6f6b3543d8e0b3aa0a7"
+  integrity sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==
 
 semaphore@>=1.0.1, semaphore@^1.0.3:
   version "1.1.0"
