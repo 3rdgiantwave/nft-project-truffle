@@ -44,7 +44,14 @@
 // require('dotenv').config();
 // const { MNEMONIC, PROJECT_ID } = process.env;
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const fs = require('fs');
+const mnemonicPhrase = fs.readFileSync(".secret").toString().trim();
+const infuraProjectId = fs.readFileSync(".infura").toString().trim();
+const mnemonicChromePhrase = fs.readFileSync(".secret-chrome").toString().trim();
+const maticProjectId = fs.readFileSync(".matic").toString().trim();
+const etherscanApiKey = fs.readFileSync(".etherscan").toString().trim();
+const polygonscanApiKey = fs.readFileSync(".polygonscan").toString().trim();
 
 module.exports = {
   /**
@@ -68,7 +75,7 @@ module.exports = {
       host: "127.0.0.1",
       port: 8545,
       network_id: "*",
-    }
+    },
     // development: {
     //  host: "127.0.0.1",     // Localhost (default: none)
     //  port: 8545,            // Standard Ethereum port (default: none)
@@ -94,7 +101,26 @@ module.exports = {
     //   timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
     //   skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
     // },
-    //
+    sepolia: {
+      provider: () => new HDWalletProvider(
+      mnemonicPhrase,
+      `https://sepolia.infura.io/v3/${infuraProjectId}`
+      ),
+      network_id: 11155111, // Sepolia's network ID
+      gas: 4000000, // Adjust the gas limit as per your requirements
+      gasPrice: 10000000000, // Set the gas price to an appropriate value
+      confirmations: 2, // Set the number of confirmations needed for a transaction
+      timeoutBlocks: 200, // Set the timeout for transactions
+      skipDryRun: true // Skip the dry run option
+     },
+     matic: {
+      provider: () => new HDWalletProvider(mnemonicChromePhrase, `https://rpc-mumbai.maticvigil.com/v1/${maticProjectId}`),
+      //host: 'https://rpc-mumbai.matic.today',
+      network_id: 80001,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },
     // Useful for private networks
     // private: {
     //   provider: () => new HDWalletProvider(MNEMONIC, `https://network.io`),
@@ -123,6 +149,11 @@ module.exports = {
     }
   },
 
+  plugins: ['truffle-plugin-verify'],
+  api_keys: {
+    etherscan: etherscanApiKey,
+    polygonscan: polygonscanApiKey
+  }
   // Truffle DB is currently disabled by default; to enable it, change enabled:
   // false to enabled: true. The default storage location can also be
   // overridden by specifying the adapter settings, as shown in the commented code below.
