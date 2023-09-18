@@ -50,6 +50,8 @@ const mnemonicPhrase = fs.readFileSync(".secret").toString().trim();
 const infuraProjectId = fs.readFileSync(".infura").toString().trim();
 const mnemonicChromePhrase = fs.readFileSync(".secret-chrome").toString().trim();
 const maticProjectId = fs.readFileSync(".matic").toString().trim();
+const etherscanApiKey = fs.readFileSync(".etherscan").toString().trim();
+const polygonscanApiKey = fs.readFileSync(".polygonscan").toString().trim();
 
 module.exports = {
   /**
@@ -147,6 +149,11 @@ module.exports = {
     }
   },
 
+  plugins: ['truffle-plugin-verify'],
+  api_keys: {
+    etherscan: etherscanApiKey,
+    polygonscan: polygonscanApiKey
+  }
   // Truffle DB is currently disabled by default; to enable it, change enabled:
   // false to enabled: true. The default storage location can also be
   // overridden by specifying the adapter settings, as shown in the commented code below.
